@@ -1,29 +1,29 @@
-#include "molecular.h"
+#include "molecule.h"
 
 /**************************************************************************/
 
-Molecular::Molecular (size_t init_size, const Vector& init_coord, const Vector& init_speed)
+Molecule::Molecule (size_t init_size, const Vector& init_coord, const Vector& init_speed)
     : Object(1), size(init_size), coord(init_coord), speed(init_speed)
 {}
 
-Molecular::Molecular (bool isDraw, size_t init_size, const Vector& init_coord, const Vector& init_speed)
+Molecule::Molecule (bool isDraw, size_t init_size, const Vector& init_coord, const Vector& init_speed)
     : Object(isDraw), size(init_size), coord(init_coord), speed(init_speed)
 {}
 
 /**************************************************************************/
 
-ObjectType Molecular::type () const 
+ObjectType Molecule::type () const 
 {
-    return ObjectTypeMolecular;
+    return ObjectTypeMolecule;
 }         
 
-void Molecular::setCoordShift (coord_t x, coord_t y)
+void Molecule::setCoordShift (coord_t x, coord_t y)
 {
     coord.setX (coord.getX() + x);
     coord.setY (coord.getY() - y);
 }
 
-void Molecular::draw (GraphicsCtx& ctx) //const
+void Molecule::draw (GraphicsCtx& ctx) //const
 {
     sf::CircleShape circle;
 

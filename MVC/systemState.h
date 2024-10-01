@@ -1,12 +1,12 @@
 #ifndef STL_SYSTEM_STATE
 #define STL_SYSTEM_STATE
 
-#include "../objects/molecular.h"
+#include "../objects/molecule.h"
 #include "../objects/wall.h"
 
 struct SystemState
 {
-    std::vector <Molecular> moleculars; 
+    std::vector <Molecule> molecules; 
     std::vector <Wall> walls; 
 };
 
@@ -20,19 +20,19 @@ public:
         : systemState(init_systemState)
     {}
 
-    size_t getMolecularsSize () const
+    size_t getMoleculesSize () const
     {
-        return systemState.moleculars.size();
+        return systemState.molecules.size();
     }
 
-    Molecular getMolecularIndex (size_t index) const
+    Molecule getMoleculeIndex (size_t index) const
     {
-        return systemState.moleculars[index];
+        return systemState.molecules[index];
     }
 
-    void DrawMolecularIndex (size_t index, GraphicsCtx& ctx)
+    void DrawMoleculeIndex (size_t index, GraphicsCtx& ctx)
     {
-        systemState.moleculars[index].draw(ctx);
+        systemState.molecules[index].draw(ctx);
     }
 
     size_t getWallsSize () const

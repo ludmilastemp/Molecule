@@ -8,7 +8,7 @@ using coord_t = int;
 
 enum ObjectType // enum class
 {
-    ObjectTypeMolecular,       
+    ObjectTypeMolecule,       
     ObjectTypeWall,       
     // ObjectTypeScene,        // содержит группу объектов
 };

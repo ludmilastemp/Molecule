@@ -4,7 +4,7 @@ a.out:
 		MVC/model.cpp             	\
 		MVC/view.cpp              	\
 		objects/object.cpp      	\
-		objects/molecular.cpp      	\
+		objects/molecule.cpp      	\
 		objects/wall.cpp         	\
 		vectors/vector.cpp  		\
 		vectors/vectorDec.cpp 		\

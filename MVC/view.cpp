@@ -12,15 +12,15 @@ void View::draw (GraphicsCtx& ctx)
 {
     for (int i = 0; i < systemState.getWallsSize(); i++)
     {
-        // Molecular mol = systemState.getMolecularIndex(i);
+        // Molecule mol = systemState.getMoleculeIndex(i);
         // mol.draw (ctx);
         systemState.DrawWallIndex(i, ctx);
     }
-    for (int i = 0; i < systemState.getMolecularsSize(); i++)
+    for (int i = 0; i < systemState.getMoleculesSize(); i++)
     {
-        // Molecular mol = systemState.getMolecularIndex(i);
+        // Molecule mol = systemState.getMoleculeIndex(i);
         // mol.draw (ctx);
-        systemState.DrawMolecularIndex(i, ctx);
+        systemState.DrawMoleculeIndex(i, ctx);
     }
 }
 

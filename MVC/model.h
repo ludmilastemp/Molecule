@@ -10,8 +10,8 @@ public:
 
     Model ();
 
-    void addMolecular (Molecular mol); 
-    void addWall      (Wall      wall); 
+    void addMolecule (Molecule mol); 
+    void addWall     (Wall      wall); 
     void update ();
 };
 
