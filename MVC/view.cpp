@@ -3,17 +3,24 @@
 /**************************************************************************/
 
 View::View (SystemState& init_systemState)
-    :systemState(init_systemState)
+    :systemState (init_systemState)
 {}
 
 /**************************************************************************/
 
 void View::draw (GraphicsCtx& ctx)
 {
-    for (int i = 0; i < systemState.moleculars.size(); i++)
+    for (int i = 0; i < systemState.getWallsSize(); i++)
     {
-        Molecular& mol = *systemState.moleculars[i];
-        mol.draw (ctx);
+        // Molecular mol = systemState.getMolecularIndex(i);
+        // mol.draw (ctx);
+        systemState.DrawWallIndex(i, ctx);
+    }
+    for (int i = 0; i < systemState.getMolecularsSize(); i++)
+    {
+        // Molecular mol = systemState.getMolecularIndex(i);
+        // mol.draw (ctx);
+        systemState.DrawMolecularIndex(i, ctx);
     }
 }
 

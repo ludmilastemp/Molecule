@@ -9,6 +9,7 @@ using coord_t = int;
 enum ObjectType // enum class
 {
     ObjectTypeMolecular,       
+    ObjectTypeWall,       
     // ObjectTypeScene,        // содержит группу объектов
 };
 
@@ -28,7 +29,6 @@ public:
     virtual ~Object () = default; 
 
     virtual ObjectType type () const = 0;
-    virtual void       setCoordShift (coord_t x, coord_t y) = 0;
     virtual void       draw (GraphicsCtx& ctx) = 0; // const
 };
 

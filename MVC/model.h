@@ -6,10 +6,12 @@
 class Model
 {
 public:
-    SystemState& systemState;
+    SystemState systemState;
 
-    Model (SystemState& systemState);
+    Model ();
 
+    void addMolecular (Molecular mol); 
+    void addWall      (Wall      wall); 
     void update ();
 };
 

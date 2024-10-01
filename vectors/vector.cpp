@@ -126,7 +126,7 @@ int Vector::getY ()
 int Vector::getLen ()
 {
     if (stat_== DEC) updatePol ();
-    return pol_.len;
+    return abs(pol_.len);
 }
 
 double Vector::getPhi ()

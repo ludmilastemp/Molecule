@@ -2,12 +2,12 @@
 
 /**************************************************************************/
 
-Molecular::Molecular (const Vector& init_coord, const Vector& init_speed)
-    : Object(1), coord(init_coord), speed(init_speed)
+Molecular::Molecular (size_t init_size, const Vector& init_coord, const Vector& init_speed)
+    : Object(1), size(init_size), coord(init_coord), speed(init_speed)
 {}
 
-Molecular::Molecular (bool isDraw, const Vector& init_coord, const Vector& init_speed)
-    : Object(isDraw), coord(init_coord), speed(init_speed)
+Molecular::Molecular (bool isDraw, size_t init_size, const Vector& init_coord, const Vector& init_speed)
+    : Object(isDraw), size(init_size), coord(init_coord), speed(init_speed)
 {}
 
 /**************************************************************************/
@@ -27,8 +27,8 @@ void Molecular::draw (GraphicsCtx& ctx) //const
 {
     sf::CircleShape circle;
 
-    circle.setRadius(10);
-    circle.setPosition(coord.getX(), coord.getY());
+    circle.setRadius(size);
+    circle.setPosition(coord.getX() - size, coord.getY() - size);
     circle.setFillColor (sf::Color::Green);
 
     // circle.setOutlineColor(sf::Color::Red);

@@ -9,15 +9,17 @@
 class Molecular : public Object
 {
 public:
+    size_t size;
     Vector coord;
     Vector speed;
     // Color    color;
 
-    Molecular (             const Vector& coord, const Vector& speed);
-    Molecular (bool isDraw, const Vector& coord, const Vector& speed);
-
-    virtual ObjectType type () const override;         
-    virtual void       setCoordShift (coord_t x, coord_t y) override;
+    Molecular (             size_t size, const Vector& coord, const Vector& speed);
+    Molecular (bool isDraw, size_t size, const Vector& coord, const Vector& speed);
+      
+    void setCoordShift (coord_t x, coord_t y);
+    
+    virtual ObjectType type () const override;   
     virtual void       draw (GraphicsCtx& ctx) override; // const
 }; 
 

@@ -6,7 +6,7 @@
 class View
 {
 public:
-    SystemState& systemState;
+    SystemStateProxy systemState;
 
     View (SystemState& systemState);
 
