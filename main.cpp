@@ -2,12 +2,9 @@
 #include <SFML/Graphics.hpp>
 
 #include "GrLib/GrLib.h"
-#include "MVC/systemState.h"
-#include "MVC/model.h"
-#include "MVC/view.h"
-#include "objects/molecule.h"
-
-//#include "test.h"
+#include "MVC/controllerMolecule.h"
+#include "MVC/modelMolecule.h"
+#include "MVC/viewMolecule.h"
 
 int main()
 {
@@ -16,39 +13,69 @@ int main()
 
     GraphicsCtx ctx {};
 
-    Model model {};
-    View view   {model.systemState}; 
+/*
+ * MVC основной (для молекул)
+ */
+    ModelMolecule      modelMolecule {};
+    ViewMolecule       viewMolecule   {modelMolecule.systemState}; 
 
-    model.addMolecule ({10, {370, 160}, {2, 4}});
-    model.addMolecule ({10, {390, 180}, {2, -1}});
-    model.addMolecule ({10, {410, 200}, {1, -4}});
-    model.addMolecule ({10, {430, 420}, {5, -3}});
-    model.addMolecule ({10, {450, 440}, {7, 1}});
-    model.addMolecule ({10, {400, 440}, {2, 1}});
+/*
+ * Создание начальных молекул
+ */
+    modelMolecule.addMolecule ({10, {370, 160}, {2, 4}});
+    modelMolecule.addMolecule ({10, {390, 180}, {2, -1}});
+    modelMolecule.addMolecule ({10, {410, 200}, {1, -4}});
+    modelMolecule.addMolecule ({10, {430, 420}, {5, -3}});
+    modelMolecule.addMolecule ({10, {450, 440}, {7, 1}});
+    modelMolecule.addMolecule ({10, {400, 440}, {2, 1}});
 
+/*
+ * Создание начальных стен
+ */
     int diff = 30;
-    model.addWall ({{300, 275}, {500, 275}, {500, 325}, {300, 325}});
-    model.addWall ({{100, 100}, {700, 100}, {700, 100 + diff}, {100, 100 + diff}});
-    model.addWall ({{100, 500 - diff}, {700, 500 - diff}, {700, 500}, {100, 500}});
-    model.addWall ({{100, 100}, {100 + diff, 100}, {100 + diff, 500}, {100, 500}});
-    model.addWall ({{700 - diff, 100}, {700, 100}, {700, 500}, {700 - diff, 500}});
+    modelMolecule.addWall ({{300, 275}, {500, 275}, {500, 325}, {300, 325}});
+    modelMolecule.addWall ({{100, 100}, {700, 100}, {700, 100 + diff}, {100, 100 + diff}});
+    modelMolecule.addWall ({{100, 500 - diff}, {700, 500 - diff}, {700, 500}, {100, 500}});
+    modelMolecule.addWall ({{100, 100}, {100 + diff, 100}, {100 + diff, 500}, {100, 500}});
+    modelMolecule.addWall ({{700 - diff, 100}, {700, 100}, {700, 500}, {700 - diff, 500}});
 
+/*
+ * MVC для кнопок
+ */
+    ModelButton modelButton {};
+    ViewButton  viewButton   {&modelButton.buttons}; 
+
+/*
+ * Создание кнопок
+ */
+    ActionAddMolecule    actionAddMolecule {modelMolecule};
+    ActionDeleteMolecule actionDeleteMolecule {modelMolecule};
+    modelButton.addButton ({true, {25, 25}, {50, 50}, actionAddMolecule});
+    modelButton.addButton ({true, {85, 25}, {50, 50}, actionDeleteMolecule});
+
+    ControllerMolecule controllerMolecule {modelButton, viewButton};
 
     while (IsWindowOpen(ctx))
     {
-        i++;
+        // i++;
         // if (i == 70) return 0;
-
-        model.update ();
+        
+        if (ctx.window.pollEvent(ctx.event))
+        {
+            ctx.checkEvent = true;
+        }
 
         CheckEventCloseWindow (ctx);
         CleanWindow (ctx);
 
-        view.draw (ctx);
+        /*
+        * MVC
+        */
+            modelMolecule.update ();
+            viewMolecule.update (ctx);
+            controllerMolecule.update (ctx);
 
-        DisplayWindow(ctx);
-
-        sf::sleep (sf::seconds(0.01));
+        DisplayWindow(ctx);                                                                                                                                 sf::sleep (sf::seconds(0.01));
     }
 
     return 0;

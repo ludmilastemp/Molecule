@@ -8,6 +8,7 @@ class GraphicsCtx
 public:
     sf::RenderWindow window;
     sf::Event event;
+    bool checkEvent;
 
     GraphicsCtx ();
 };

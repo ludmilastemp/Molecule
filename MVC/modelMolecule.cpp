@@ -1,8 +1,8 @@
-#include "model.h"
+#include "modelMolecule.h"
 
 /**************************************************************************/
 
-Model::Model ()
+ModelMolecule::ModelMolecule ()
 {}
 
 /**************************************************************************/
@@ -12,17 +12,23 @@ void CollideWithWalls (SystemState& systemState, Molecule& mol);
 
 /**************************************************************************/
 
-void Model::addMolecule (Molecule mol)
+void ModelMolecule::addMolecule (Molecule mol)
 {
     systemState.molecules.push_back (mol);
 }
 
-void Model::addWall (Wall wall)
+void ModelMolecule::deleteMolecule ()
+{
+    if (systemState.molecules.size() > 0)
+        systemState.molecules.pop_back ();
+}
+
+void ModelMolecule::addWall (Wall wall)
 {
     systemState.walls.push_back (wall);
 }
 
-void Model::update ()
+void ModelMolecule::update ()
 {
     for (int i = 0; i < systemState.molecules.size(); i++)
     {

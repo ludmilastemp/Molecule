@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 GraphicsCtx::GraphicsCtx ()
-    :window(sf::VideoMode(kWidthWindow * 2, kHeightWindow * 2), "SFML works!"), event()//sf::Event 
+    :window(sf::VideoMode(kWidthWindow * 2, kHeightWindow * 2), "SFML works!"), event(), checkEvent(0)//sf::Event 
 {
     sf::Image img;
     img.create(kWidthWindow * 2, kHeightWindow * 2, sf::Color::Black);
@@ -51,11 +51,11 @@ bool IsWindowOpen (GraphicsCtx& ctx)
 void CheckEventCloseWindow (GraphicsCtx& ctx)
 {
     sf::Event event;
-    while (ctx.window.pollEvent(event))
-    {
-        if (event.type == sf::Event::Closed)
+    // while (ctx.window.pollEvent(ctx.event))
+    // {
+        if (ctx.event.type == sf::Event::Closed)
             ctx.window.close();
-    }
+    // }
 }
 
 void DisplayWindow (GraphicsCtx& ctx)

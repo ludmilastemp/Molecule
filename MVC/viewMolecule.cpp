@@ -1,14 +1,14 @@
-#include "view.h"
+#include "viewMolecule.h"
 
 /**************************************************************************/
 
-View::View (SystemState& init_systemState)
+ViewMolecule::ViewMolecule (SystemState& init_systemState)
     :systemState (init_systemState)
 {}
 
 /**************************************************************************/
 
-void View::draw (GraphicsCtx& ctx)
+void ViewMolecule::update (GraphicsCtx& ctx)
 {
     for (int i = 0; i < systemState.getWallsSize(); i++)
     {

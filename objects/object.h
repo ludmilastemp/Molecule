@@ -4,13 +4,13 @@
 #include "../GrLib/GrLibCtx.h"
 // #include "../color.h"
 
-using coord_t = int; 
+// using coord_t = int; 
 
 enum ObjectType // enum class
 {
     ObjectTypeMolecule,       
     ObjectTypeWall,       
-    // ObjectTypeScene,        // содержит группу объектов
+    ObjectTypeButton,       
 };
 
 // enum IsDraw 
