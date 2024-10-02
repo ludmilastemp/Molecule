@@ -16,8 +16,8 @@ int main()
 /*
  * MVC основной (для молекул)
  */
-    ModelMolecule      modelMolecule {};
-    ViewMolecule       viewMolecule   {modelMolecule.systemState}; 
+    ModelMolecule modelMolecule {};
+    ViewMolecule  viewMolecule   {modelMolecule.systemState}; 
 
 /*
  * Создание начальных молекул
@@ -53,8 +53,14 @@ int main()
     modelButton.addButton ({true, {25, 25}, {50, 50}, actionAddMolecule});
     modelButton.addButton ({true, {85, 25}, {50, 50}, actionDeleteMolecule});
 
+/*
+ * Создание контроллера для молекул
+ */
     ControllerMolecule controllerMolecule {modelButton, viewButton};
 
+/*
+ * Начало программы
+ */
     while (IsWindowOpen(ctx))
     {
         // i++;
@@ -71,11 +77,12 @@ int main()
         /*
         * MVC
         */
-            modelMolecule.update ();
-            viewMolecule.update (ctx);
-            controllerMolecule.update (ctx);
+            modelMolecule ();
+            viewMolecule (ctx);
+            controllerMolecule (ctx);
 
-        DisplayWindow(ctx);                                                                                                                                 sf::sleep (sf::seconds(0.01));
+
+        DisplayWindow(ctx);                                                                                                                                sf::sleep (sf::seconds(0.01));
     }
 
     return 0;

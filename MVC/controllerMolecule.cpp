@@ -10,8 +10,19 @@ ControllerMolecule::ControllerMolecule (ModelButton& init_modelButton, ViewButto
 
 void ControllerMolecule::update (GraphicsCtx& ctx)
 {
-    modelButton.update (ctx);
-    viewButton.update (ctx);
+    if (ctx.checkEvent == true &&
+        ctx.event.type == sf::Event::MouseButtonPressed &&
+        ctx.event.mouseButton.button == sf::Mouse::Left)
+    {
+        // printf ("Mouse button pressed\n");
+        sf::Vector2i pos = sf::Mouse::getPosition(ctx.window);
+
+        modelButton (pos);
+
+        ctx.checkEvent = false;
+    }
+
+    viewButton (ctx);
 }
 
 /**************************************************************************/

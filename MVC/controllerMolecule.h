@@ -12,6 +12,11 @@ public:
 
     ControllerMolecule (ModelButton& modelButton, ViewButton&  viewButton);
 
+    void operator() (GraphicsCtx& ctx)
+    {
+        update(ctx);
+    }
+
     void update (GraphicsCtx& ctx);
 };
 

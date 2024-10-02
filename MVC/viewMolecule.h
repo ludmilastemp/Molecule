@@ -10,6 +10,11 @@ public:
 
     ViewMolecule (SystemState& systemState);
 
+    void operator() (GraphicsCtx& ctx)
+    {
+        update(ctx);
+    }
+
     void update (GraphicsCtx& ctx);
 };
 

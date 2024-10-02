@@ -10,6 +10,11 @@ public:
 
     ViewButton (std::vector <Button> *buttons);
 
+    void operator() (GraphicsCtx& ctx)
+    {
+        update(ctx);
+    }
+
     void update (GraphicsCtx& ctx);
 };
 

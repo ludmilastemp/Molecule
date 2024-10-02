@@ -10,6 +10,11 @@ public:
 
     ModelMolecule ();
 
+    void operator() ()
+    {
+        update();
+    }
+
     void deleteMolecule (); 
     void addMolecule    (Molecule mol); 
     void addWall        (Wall      wall); 

@@ -10,8 +10,13 @@ public:
 
     ModelButton ();
 
+    void operator() (sf::Vector2i pos)
+    {
+        update(pos);
+    }
+
     void addButton (Button button); 
-    void update (GraphicsCtx& ctx);
+    void update (sf::Vector2i pos);
 };
 
 #endif /* STL_MODEL_BUTTON */
